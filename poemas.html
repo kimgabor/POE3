@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poe-mas</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            font-family: Georgia, serif;
+            color: white;
+        }
+
+        header {
+            background: #c06a00;
+            padding: 25px 0 15px;
+            text-align: center;
+            border-bottom: 3px solid #4a2b00;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 50px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 15px 0;
+            background: #8a4800;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 5px;
+        }
+
+        .contenedor {
+            /* CORRECCIÓN DE ANCHO */
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .poema {
+            background: #2b2424;
+            padding: 18px 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #1a1414;
+            transition: background .3s;
+        }
+
+        .poema:hover {
+            background: #3a3232;
+        }
+
+        .poema span {
+            font-size: 28px;
+        }
+
+        .sinopsis {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #1c1616;
+            padding: 0 25px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .sinopsis p {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #e3e3e3;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 36px; }
+            .poema { font-size: 20px; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Poe-mas</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="Relatos.html">Relatos</a>
+        <a href="Biografia.html">Biografía</a>
+        <a href="Galeria.html">Galería</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <div class="contenedor">
+        <div class="poema">
+            El cuervo
+            <span>+</span>
+        </div>
+        <div class="sinopsis">
+            <p>El cuervo - Edgar Allan Poe<br><br>
+            Una vez, al filo de una lúgubre media noche...<br>
+            (Texto completo aquí)...<br>
+            ¡Nunca más!</p>
+        </div>
+
+        <div class="poema">
+            Annabelle Lee
+            <span>+</span>
+        </div>
+        <div class="sinopsis">
+            <p>La historia de un amor tan fuerte que ni la muerte puede destruir, narrado por 
+            un hombre que aún llora a su amada Annabelle Lee.</p>
+        </div>
+
+        <div class="poema">
+            Ulalume
+            <span>+</span>
+        </div>
+        <div class="sinopsis">
+            <p>Un viaje por un paisaje sombrío que refleja el duelo y los recuerdos tristes 
+            de una mujer fallecida llamada Ulalume.</p>
+        </div>
+
+        <div class="poema">
+            A Helen
+            <span>+</span>
+        </div>
+        <div class="sinopsis">
+            <p>Poe expresa su admiración por la belleza idealizada de Helen, símbolo de arte, 
+            gracia y perfección clásica.</p>
+        </div>
+    </div>
+
+    <script>
+        const poemas = document.querySelectorAll(".poema");
+        poemas.forEach((poema, i) => {
+            poema.addEventListener("click", () => {
+                const sinopsis = poema.nextElementSibling;
+                const signo = poema.querySelector("span");
+
+                if (sinopsis.style.maxHeight === "" || sinopsis.style.maxHeight === "0px") {
+                    sinopsis.style.maxHeight = sinopsis.scrollHeight + "px";
+                    signo.textContent = "-";
+                } else {
+                    sinopsis.style.maxHeight = "0";
+                    signo.textContent = "+";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
